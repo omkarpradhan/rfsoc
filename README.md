@@ -19,3 +19,4 @@
 - Modified the `startsg.local` file with the following additions:\
 `export LD_PRELOAD=${LD_PRELOAD}:"/lib/x86_64-linux-gnu/libgnutls.so.30";matlab` #likely that this does not do anything\
 `export MLIB_DEVEL_PATH=/home/pradhan/jpl/git/sandbox/casper/mlib_devel`#seems to help with the casper and xilinx libraries not being added randomly
+- Must be connected to JPL net (e.g. via VPN) to start Matlab
