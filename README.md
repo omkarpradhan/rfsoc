@@ -17,6 +17,6 @@
 - Product keys for older versions can be found at [this wiki page](https://wiki.jpl.nasa.gov/display/plmssa/ECAE+Knowledge+Base+-+MATLAB+FAQ+and+User+Self+Guide)
 - The license file `license.lic` can be found [here](https://opencae.jpl.nasa.gov/portal/#/tool-detail/541531592)
 - Modified the `startsg.local` file with the following additions:\
-`export LD_PRELOAD=${LD_PRELOAD}:"/lib/x86_64-linux-gnu/libgnutls.so.30";matlab` #likely that this does not do anything\
+`export LD_PRELOAD=${LD_PRELOAD}:"/lib/x86_64-linux-gnu/libgnutls.so.30";matlab` #likely helping with finding correct libraries
 `export MLIB_DEVEL_PATH=/home/pradhan/jpl/git/sandbox/casper/mlib_devel`#seems to help with the casper and xilinx libraries not being added randomly
 - Must be connected to JPL net (e.g. via VPN) to start Matlab
