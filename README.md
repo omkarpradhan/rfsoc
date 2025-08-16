@@ -20,3 +20,8 @@
 `export LD_PRELOAD=${LD_PRELOAD}:"/lib/x86_64-linux-gnu/libgnutls.so.30";matlab` #likely helping with finding correct libraries
 `export MLIB_DEVEL_PATH=/home/pradhan/jpl/git/sandbox/casper/mlib_devel`#seems to help with the casper and xilinx libraries not being added randomly
 - Must be connected to JPL net (e.g. via VPN) to start Matlab
+
+#### Hardware Interface
+- Downloaded the SD card image from Casper RFSoC bring-up page [insert link here]
+- Setup DHCP on host computer server (Ubuntu) to assign IP address to the RFSoC
+- login: casper@[ip-address], password: casper
