@@ -21,6 +21,61 @@
 `export MLIB_DEVEL_PATH=/home/pradhan/jpl/git/sandbox/casper/mlib_devel`#seems to help with the casper and xilinx libraries not being added randomly
 - Must be connected to JPL net (e.g. via VPN) to start Matlab
 
+#### DHCP setup
+- The `casper` SD image configures onboard Linux OS to use DHCP, this means that IP address will be provided by the host computer
+- A DHCP server should be set up on the host computer [Link](https://medium.com/@sydasif78/setting-up-a-dhcp-server-on-ubuntu-a-guide-for-network-engineer-d620c5d7afb2)
+
+- Preliminaries:
+```
+sudo apt install netplan.io isc-dhcp-server # Install packages. The netplan.io package may already be installed
+
+sudo ip addr show # Get the name of desired interface e.g. enp0s31f6
+
+nano /etc/netplan/[config-filename].yaml # Configure the Netplan YAML
+```
+Host computer Netplan for desired interface [Example](https://documentation.ubuntu.com/server/explanation/networking/configuring-networks/):
+```
+network:
+    version: 2
+    renderer: NetworkManager
+    ethernets:
+        enp0s31f6
+            dhcp4: no
+            addresses: [192.168.137.1/24]
+            nameservers:
+                addresses: [192.168.137.1,8.8.8.8]
+            routes:
+                - to: default
+                  via: 192.168.137.1
+```
+`sudo netplan apply` # apply configuration
+
+- DHCP configuration on host computer
+```
+sudo systemctl status isc-dhcp-server #check DHCP service status
+
+sudo nano /etc/dhcp/dhcpd.conf #Edit the DHCP config. file
+```
+- Host computer DHCP configuration [Example](https://medium.com/@sydasif78/setting-up-a-dhcp-server-on-ubuntu-a-guide-for-network-engineer-d620c5d7afb2):
+```
+default-lease-time 43200;
+max-lease-time 86400;
+option subnet-mask 255.255.255.0;
+option broadcast-address 192.168.137.255;
+option domain-name "local.lan";
+authoritative;
+subnet 192.168.137.0 netmask 255.255.255.0 {
+    range 192.168.137.100 192.168.137.200;
+    option routers 192.168.137.1;
+    option domain-name-servers 192.168.137.1;
+}
+```
+`nano /etc/default/isc-dhcp-server` # edit which interface the DHCP server should be service\
+`INTERFACES="enp0s31f6"` # assuming the interface name is __enp0s31f6__\
+`sudo systemctl start isc-dhcp-server` # start server
+`cat /var/lib/dhcp/dhcpd.leases` # check which IP addresses have been leased out (when clients are connected to server over ethernet interface)
+
+
 #### Hardware Interface
 - Downloaded the SD card image from Casper RFSoC bring-up page [insert link here]
 - Setup DHCP on host computer server (Ubuntu) to assign IP address to the RFSoC
