@@ -12,6 +12,7 @@ if strcmp(jasper_backend, 'vivado') || strcmp(jasper_backend, 'vitis') || isempt
   addpath([getenv('MLIB_DEVEL_PATH'), '/casper_library']);
   addpath([getenv('MLIB_DEVEL_PATH'), '/xps_library']);
   addpath([getenv('MLIB_DEVEL_PATH'), '/jasper_library']);
+  addpath([getenv('COMPOSER_PATH'), '/simulink']);
   %addpath(getenv('HDL_DSP_DEVEL'));
   if ~isempty(getenv('DSP_HDL_SL_PATH'))
     addpath(getenv('DSP_HDL_SL_PATH'));
