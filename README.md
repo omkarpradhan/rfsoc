@@ -1,5 +1,10 @@
 ## Brief:
 
+### Software
+- Linux : ubuntu 22.04.5 LTS (jammy)
+        : Not supported by Casper tools for the Matlab - Vivado combination used here. We will still continue and see how this goes
+- Matlab : 2021a
+- Vivado : 2021.1
 ### RFSoC Casper environment installation log
 
 #### Python 3.8
@@ -10,25 +15,40 @@
 - Using ubuntu 22.04 - not exactly supported by the caster tools install workflow, but risking it anyway
 - Installed Vivado 2021.1 using the Xilinx unified installer
 - Linux username must be same as that in JPL's DNS e.g. same as that used for SSO login
-- Added JPL Vivado license server `2200@cae-lm-xilinx1`
-- If we get error related to `libtinfo` when trying to start GUI, install `libtinfo5`
+- Added JPL Vivado license server __2200@cae-lm-xilinx1__
+- If we get error related to __libtinfo__ when trying to start GUI, install it as `sudo apt install libtinfo5`
 
 #### Matlab 2021a
 - Installation on JPL computer may require the ISO - using the product installer does not work
 - Product keys for older versions can be found at [this wiki page](https://wiki.jpl.nasa.gov/display/plmssa/ECAE+Knowledge+Base+-+MATLAB+FAQ+and+User+Self+Guide)
-- The license file `license.lic` can be found [here](https://opencae.jpl.nasa.gov/portal/#/tool-detail/541531592)
-- Modified the `startsg.local` file with the following additions:
-```
-export LD_PRELOAD=${LD_PRELOAD}:"/lib/x86_64-linux-gnu/libgnutls.so.30";matlab #likely helping with finding correct libraries
-export MLIB_DEVEL_PATH=/home/pradhan/jpl/git/sandbox/casper/mlib_devel#seems to help with the casper and xilinx libraries not being added randomly
-```
-- Modified local `startup.m` from repo with following path addition `addpath` for the model composer simulink libraries.
+- The license file __license.lic__ can be found [here](https://opencae.jpl.nasa.gov/portal/#/tool-detail/541531592)
+- Modified the __startsg.local__ file with the following additions:
 
-`addpath([getenv('COMPOSER_PATH'), '/simulink']); # Needed to correctly load the Xilinx toolbox as a simulink library`
+    `export MLIB_DEVEL_PATH=/home/pradhan/jpl/git/sandbox/casper/mlib_devel` # seems to help with the casper and xilinx libraries not being added randomly
 
-- This `startup.m` should be maintained in the development repo and not the cloned casper repos. use symlink to `startsg` and locally maintained `startsg.local` to correctly add all necessary paths while ensuring current Matlab math is the development directory.
+- This __startup.m__ should be maintained in the development repo and not the cloned casper repos. use symlink to __startsg__ and locally maintained __startsg__.local` to correctly add all necessary paths while ensuring current Matlab math is the development directory.
 
 - Must be connected to JPL net (e.g. via VPN) to start Matlab with `./startsg`
+
+- Model composer (interface between Simulink and HDL models) does not work as expected, likely due to the OS mismatch
+
+- Very similar problems are documented, debugged, and fixed [here](https://strath-sdr.github.io/tools/matlab/sysgen/vivado/linux/2021/01/28/sysgen-on-20-04.html) and [here](https://gist.github.com/dcxSt/13f0760ee423082f15e151170b943fa6)
+- The two aspects to this problem are \
+    (1) A clash between Matlab using Vivado's version of __libgmp.so__ instead of the system version. The general steps are as follows\
+     
+    (i) `>>!ldd /lib/x86_64-linux-gnu/libhogweed.so.6` # Execute at Matlab prompt.Assumes that the missing headers were from this __libhogweed.so.6__ library
+    (ii) `cd [problem-location-dir]` # At bash terminal goto to the location pointed to in the output of `!ldd` that looks to be a __Xilinx__ location and not a system location\    
+    (iii) `mkdir exclude` # make a folder to be excluded\
+    (iv) `mv -r libhogweed.so* exclude` # move all the conflicting library files into __exclude__ folder
+    (v) Repeat (i)-(iv) untill the output of `ldd` shows that Matlab is using system libraries
+
+    (2) Simulink does not initialize correctly due to needing qt4 libraries. But qt4 is no longer supported for Ubuntu 22. So we have to first add a PPA for qt4, then force the OS to trust updating from here, and install the necessary packages.\
+
+    (i) `sudo add-apt-repository add-apt-repository ppa:rock-core/qt4`
+    (ii) open the apt __*.list__ file, likely __/etc/apt/sources.list.d/rock-core-ubuntu-qt4-jammy.list__ and replace\ 
+    `deb https://ppa.launchpadcontent.net/rock-core/qt4/ubuntu/ jammy main` -> `deb https://ppa.launchpadcontent.net/rock-core/qt4/ubuntu/ focal main`
+
+
 
 #### DHCP setup
 - The `casper` SD image configures onboard Linux OS to use DHCP, this means that IP address will be provided by the host computer
@@ -83,6 +103,8 @@ subnet 192.168.137.0 netmask 255.255.255.0 {
 `INTERFACES="enp0s31f6"` # assuming the interface name is __enp0s31f6__\
 `sudo systemctl start isc-dhcp-server` # start server
 `cat /var/lib/dhcp/dhcpd.leases` # check which IP addresses have been leased out (when clients are connected to server over ethernet interface)
+
+#### Tool usage
 
 
 #### Hardware Interface
