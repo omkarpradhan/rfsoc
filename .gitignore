@@ -1,3 +1,5 @@
 *.jou
 vivado.log
+*backup.log
 *venv
+.Xil
