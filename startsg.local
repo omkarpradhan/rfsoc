@@ -9,5 +9,5 @@ export XLNX_DT_REPO_PATH=/home/pradhan/jpl/git/sandbox/xilinx/device-tree-xlnx
 #export LD_PRELOAD=${LD_PRELOAD}:"/usr/lib/x86_64-linux-gnu/libexpat.so"
 #export LD_PRELOAD=${LD_PRELOAD}:"/lib/x86_64-linux-gnu/libgnutls.so.30";matlab
 # Activate a python3 virtual-environment on load
-#export CASPER_PYTHON_VENV_ON_START=/home/pradhan/jpl/git/sandbox/casper/.cfpga_venv
+export CASPER_PYTHON_VENV_ON_START=/home/pradhan/jpl/git/sandbox/casper/.cfpga_venv
 

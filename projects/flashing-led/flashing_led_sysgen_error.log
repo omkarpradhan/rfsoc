@@ -1,0 +1,242 @@
+--------------------------------- Version Log ----------------------------------
+Version                                 Path
+System Generator 2021.1                 /opt/Xilinx/Vivado/2021.1
+Matlab 9.10.0.2015706 (R2021a) Update 7 /opt/MATLAB/R2021a
+Vivado 2021.1                           /opt/Xilinx/Vivado/2021.1
+--------------------------------------------------------------------------------
+Summary of Errors:
+Error 0001: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter'
+Error 0002: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_control/flashing_led_counter_control_user_data_out'
+Error 0003: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_control/io_delay'
+Error 0004: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_led'
+Error 0005: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_value/io_delay'
+Error 0006: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_value/cast_gw'
+Error 0007: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_value/flashing_led_counter_value_user_data_in'
+Error 0008: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_value/sim_out_reg_sim_delay'
+Error 0009: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_value/sim_out_reg_gw'
+Error 0010: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/slice_counter_en'
+Error 0011: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/slice_counter_rst'
+Error 0012: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/slice_led'
+Error 0013: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/gpio/flashing_led_gpio_gateway'
+Error 0014: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/gpio/convert'
+Error 0015: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_control/slice_reg'
+Error 0016: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_control/reint1'
+Error 0017: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_value/assert_reg'
+Error 0018: All Xilinx Blocks must be contained in a level of hierarc...
+     Block: 'flashing_led/counter_value/reint1'
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_control/flashing_led_counter_control_user_data_out'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_control/io_delay'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_led'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_value/io_delay'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_value/cast_gw'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_value/flashing_led_counter_value_user_data_in'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_value/sim_out_reg_sim_delay'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_value/sim_out_reg_gw'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/slice_counter_en'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/slice_counter_rst'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/slice_led'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/gpio/flashing_led_gpio_gateway'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/gpio/convert'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_control/slice_reg'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_control/reint1'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_value/assert_reg'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
+
+Error 0001:
+
+Reported by:
+  'flashing_led/counter_value/reint1'
+
+Details:
+All Xilinx Blocks must be contained in a level of hierarchy with a
+System Generator Token.
+
+--------------------------------------------------------------------------------
