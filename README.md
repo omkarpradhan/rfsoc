@@ -1,10 +1,14 @@
 ## Brief:
 
 ### Software
+
 - Linux : ubuntu 22.04.5 LTS (jammy)
-        : Not supported by Casper tools for the Matlab - Vivado combination used here. We will still continue and see how this goes
+    - Not supported by Casper tools for the Matlab - Vivado combination used here. 
+    - We will still continue and see how this goes
+- Linux : ubuntu 20.04.1 (officially supported by Casper)
 - Matlab : 2021a
 - Vivado : 2021.1
+
 ### RFSoC Casper environment installation log
 
 #### Python 3.8
@@ -49,6 +53,11 @@
     `deb https://ppa.launchpadcontent.net/rock-core/qt4/ubuntu/ jammy main` -> `deb https://ppa.launchpadcontent.net/rock-core/qt4/ubuntu/ focal main`
 
 
+
+#### Casper tools
+[Casper tool flow docs](https://casper-toolflow.readthedocs.io/projects/tutorials/en/latest/tutorials/rfsoc/tut_getting_started.html)
+
+If *permission denied* error occurs check for folder ownership and permissions. Not a good idea to brute force using *sudo*
 
 #### DHCP setup
 - The `casper` SD image configures onboard Linux OS to use DHCP, this means that IP address will be provided by the host computer
