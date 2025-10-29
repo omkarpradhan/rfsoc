@@ -1,6 +1,6 @@
 export MLIB_DEVEL_PATH=/home/pradhan/jpl/git/sandbox/casper/mlib_devel
 export XILINX_PATH=/opt/Xilinx/Vivado/2021.1
-export MATLAB_PATH=/opt/MATLAB/R2021a
+export MATLAB_PATH=/opt/matlab/R2021a
 export COMPOSER_PATH=/opt/Xilinx/Model_Composer/2021.1
 #export DSP_HDL_SL_PATH=/opt/Xilinx/Model_Composer/2021.1/simulink
 export PLATFORM=lin64
