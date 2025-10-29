@@ -17,7 +17,7 @@
 
 #### Vivado 2021.1
 - Using ubuntu 22.04 - not exactly supported by the caster tools install workflow, but risking it anyway
-- Installed Vivado 2021.1 using the Xilinx unified installer
+- Installed Vivado 2021.1 using the Xilinx unified installer. The installer is usually maintained in user Downloads/xilinx
 - Linux username must be same as that in JPL's DNS e.g. same as that used for SSO login
 - Added JPL Vivado license server __2200@cae-lm-xilinx1__
 - If we get error related to __libtinfo__ when trying to start GUI, install it as `sudo apt install libtinfo5`
@@ -34,23 +34,40 @@
 
 - Must be connected to JPL net (e.g. via VPN) to start Matlab with `./startsg`
 
-- Model composer (interface between Simulink and HDL models) does not work as expected, likely due to the OS mismatch
+- Model composer (interface between Simulink and HDL models) does not work as expected.
 
-- Very similar problems are documented, debugged, and fixed [here](https://strath-sdr.github.io/tools/matlab/sysgen/vivado/linux/2021/01/28/sysgen-on-20-04.html) and [here](https://gist.github.com/dcxSt/13f0760ee423082f15e151170b943fa6)
-- The two aspects to this problem are \
-    (1) A clash between Matlab using Vivado's version of __libgmp.so__ instead of the system version. The general steps are as follows\
+    - Very similar problems are documented, debugged, and fixed [here](https://strath-sdr.github.io/tools/matlab/sysgen/vivado/linux/2021/01/28/sysgen-on-20-04.html) and [here](https://gist.github.com/dcxSt/13f0760ee423082f15e151170b943fa6)
+    
+    The two parts to this problem are \
+    \
+    (1) Warnings about *undefined symbols* and problem with __libhogweed.so*__.
+    
+    This occurs due to A clash between Matlab using Vivado's version of __libgmp.so__ instead of the system version. The general steps are as follows
      
     (i) `>>!ldd /lib/x86_64-linux-gnu/libhogweed.so.6` # Execute at Matlab prompt.Assumes that the missing headers were from this __libhogweed.so.6__ library
     (ii) `cd [problem-location-dir]` # At bash terminal goto to the location pointed to in the output of `!ldd` that looks to be a __Xilinx__ location and not a system location\    
     (iii) `mkdir exclude` # make a folder to be excluded\
     (iv) `mv -r libhogweed.so* exclude` # move all the conflicting library files into __exclude__ folder
     (v) Repeat (i)-(iv) untill the output of `ldd` shows that Matlab is using system libraries
+    \
+    (2) None of the Xilinx blocks are configurable in simulink design with *socket time out*
+    
+    This occurs because simulink does not initialize correctly due to needing qt4 libraries. But qt4 is no longer supported for Ubuntu 20 or 22. So we have to first add a PPA for qt4, then force the OS to trust updating from here, and install the necessary packages.
 
-    (2) Simulink does not initialize correctly due to needing qt4 libraries. But qt4 is no longer supported for Ubuntu 22. So we have to first add a PPA for qt4, then force the OS to trust updating from here, and install the necessary packages.\
+    - Add un-supported PPA repository
+    `sudo add-apt-repository add-apt-repository ppa:rock-core/qt4`
+    
+    - (only for Ubuntu 22) open the apt __*.list__ file, likely __/etc/apt/sources.list.d/rock-core-ubuntu-qt4-jammy.list__ and replace line     
+    *deb https://ppa.launchpadbuntucontent.net/rock-core/qt4/ubuntu/ jammy main*\
+    with\
+    *deb https://ppa.launchpadcontent.net/rock-core/qt4/ubuntu/ focal main*
 
-    (i) `sudo add-apt-repository add-apt-repository ppa:rock-core/qt4`
-    (ii) open the apt __*.list__ file, likely __/etc/apt/sources.list.d/rock-core-ubuntu-qt4-jammy.list__ and replace\ 
-    `deb https://ppa.launchpadcontent.net/rock-core/qt4/ubuntu/ jammy main` -> `deb https://ppa.launchpadcontent.net/rock-core/qt4/ubuntu/ focal main`
+    - update and install qt4 libraries
+        ```
+        sudo apt update
+        sudo apt install libqtcore4 libqtgui4
+        ```
+
 
 
 
