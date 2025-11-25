@@ -13,7 +13,7 @@
 
 #### Python 3.8
 - Install python3.8 and python3.8-dev, both required for the casper tools
-- Install python3-pip
+- Install python3-pip and python3.8-venv
 
 #### Vivado 2021.1
 - Using ubuntu 22.04 - not exactly supported by the caster tools install workflow, but risking it anyway
