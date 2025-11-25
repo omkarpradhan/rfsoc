@@ -6,6 +6,7 @@
     - Not supported by Casper tools for the Matlab - Vivado combination used here. 
     - We will still continue and see how this goes
 - Linux : ubuntu 20.04.1 (officially supported by Casper)
+- Linux packages : gcc, libpq-dev
 - Matlab : 2021a
 - Vivado : 2021.1
 
@@ -13,7 +14,7 @@
 
 #### Python 3.8
 - Install python3.8 and python3.8-dev, both required for the casper tools
-- Install python3-pip and python3.8-venv
+- Install python3-pip, python3.8-venv, python3-wheel
 
 #### Vivado 2021.1
 - Using ubuntu 22.04 - not exactly supported by the caster tools install workflow, but risking it anyway
