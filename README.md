@@ -51,6 +51,7 @@
     (iv) `mv -r libhogweed.so* exclude` # move all the conflicting library files into __exclude__ folder
     (v) Repeat (i)-(iv) untill the output of `ldd` shows that Matlab is using system libraries
     \
+  
     (2) None of the Xilinx blocks are configurable in simulink design with *socket time out*
     
     This occurs because simulink does not initialize correctly due to needing qt4 libraries. But qt4 is no longer supported for Ubuntu 20 or 22. So we have to first add a PPA for qt4, then force the OS to trust updating from here, and install the necessary packages.
