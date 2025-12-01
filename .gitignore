@@ -3,3 +3,7 @@ vivado.log
 *backup.log
 *venv
 .Xil
+*sysgen.log
+*sysgen_warning.log
+*sysgen_error.log
+*.autosave

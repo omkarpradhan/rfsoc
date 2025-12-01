@@ -71,10 +71,18 @@
         ```
 
 
-
-
 #### Casper tools
 [Casper tool flow docs](https://casper-toolflow.readthedocs.io/projects/tutorials/en/latest/tutorials/rfsoc/tut_getting_started.html)
+
+
+#### Tool flow bugs
+[x] endbr64 error with simulating simulink design - related to GNU assembler being out of date compared to the GCC compiler\
+Cause 	: This happens because Matlab is trying to use the assembler binary from Xilinx folder v/s the system assembler binaries.\
+Debug 	: Compare the output of `which as`and `as -v` at the Linux command prompt and matlab (with ! to run system commands) command prompt.\
+Fix	: For now the only fix is to move the Xilinx binary into an *exclude* folder and create a symbolic link in the same location to the system assembler binary e.g. `sudo ln -s /usr/bin/as /[path-to-assembler-binary-used-by-matlab]/as`
+ 
+
+
 
 If *permission denied* error occurs check for folder ownership and permissions. Not a good idea to brute force using *sudo*
 
